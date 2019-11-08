@@ -1,5 +1,6 @@
 package com.matao.beans;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -36,7 +37,15 @@ public class DateUtils {
 		}
 		return date1.compareTo(date2);
 	}
-	
+	/**
+	 * 
+	    * @Title: calculateAge
+	    * @Description:	计算当前年龄
+	    * @param @param birthday
+	    * @param @return    参数
+	    * @return int    返回类型
+	    * @throws
+	 */
 	public static int calculateAge(Date birthday) {
 		//birthday必须早于当前时间
 		if(birthday.compareTo(new Date())>0) {
@@ -70,4 +79,46 @@ public class DateUtils {
 			}
 			return age;
 	}
+	/**
+	 * 
+	    * @Title: remainDays
+	    * @Description: 计算将来的一个日期 还剩余多少天
+	    * @param @param futureDate
+	    * @param @return
+	    * @param @throws CmsException    参数
+	    * @return int    返回类型
+	    * @throws
+	 */
+	public static int remainDays(Date futureDate) throws CmsException {
+		/**
+		 *给定的参数是否合法，小于当前日期则认为不合法，抛出异常
+		 */
+		if(futureDate.compareTo(new Date())<0) {
+			throw new CmsException("未来日期不能小于当前日期： "+futureDate);
+		}
+		//计算有多少天
+		int days =(int) (futureDate.getTime()-new Date().getTime());
+		return days;
+	}
+	/**
+	 * 
+	    * @Title: isToday
+	    * @Description: 判断是否是今天
+	    * @param @param date
+	    * @param @return    参数
+	    * @return int    返回类型
+	    * @throws
+	 */
+	public static int isToday(Date date) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+		//获取日期的字符串
+		String dateStr = sdf.format(date);
+		
+		//获取日期的字符串
+		String todayStr = sdf.format(new Date());
+		
+		return (dateStr.compareTo(todayStr));
+	}
+
+	
 }
