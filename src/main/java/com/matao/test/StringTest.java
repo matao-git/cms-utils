@@ -27,4 +27,9 @@ public class StringTest {
 		String s =StringUtils.getRandomStr(10);
 		System.out.println("s is ::"+s);
 	}
+	@Test
+	public void testStrRland() {
+		String s =StringUtils.getRandomStr2(25);
+		System.out.println("s is "+s+" and 长度是 "+s.length());
+	}
 }
