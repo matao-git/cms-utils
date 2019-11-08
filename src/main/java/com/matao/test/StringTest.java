@@ -13,11 +13,18 @@ public class StringTest {
 	public void testIsBlank() {
 		// TODO Auto-generated method stub
 		System.out.println(StringUtils.isBlank(" "));
+		//断言 假
 		assertFalse(StringUtils.isBlank("aa"));
 	}
 	@Test
 	public void testIsBlank1() {
 		System.out.println(StringUtils.isBlank(" "));
+		//断言 真
 		assertTrue(StringUtils.isBlank(" "));
+	}
+	@Test
+	public void testRandomn() {
+		String s =StringUtils.getRandomStr(10);
+		System.out.println("s is ::"+s);
 	}
 }

@@ -1,5 +1,6 @@
 package com.matao.beans;
 
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -52,10 +53,40 @@ public class StringUtils {
 		Matcher m = compile.matcher(str);
 		return m.find();
 	}
+	/**
+	 * 
+	    * @Title: isEmail
+	    * @Description:判断是否是邮箱地址
+	    * @param @param email
+	    * @param @return    参数
+	    * @return boolean    返回类型
+	    * @throws
+	 */
 	public static boolean isEmail(String email) {
 		String regex= "^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$";
 		Pattern compile = Pattern.compile(regex);
 		Matcher m = compile.matcher(email);
 		return m.find();
+	}
+	/**
+	 * 
+	    * @Title: getRandomStr
+	    * @Description: 获取n位随机英文字符串
+	    * @param @param n
+	    * @param @return    参数
+	    * @return String    返回类型
+	    * @throws
+	 */
+	public static String getRandomStr(int n) {
+		StringBuilder sb = new StringBuilder();
+		Random random = new Random();
+		for (int i = 0; i < n; i++) {
+			//sb.append((char)('A' + random.nextInt(26)));
+			char c =(char)('A' + random.nextInt(26));
+			sb.append(c);
+			System.out.println("c is "+c);
+			System.out.println("字符串是： "+sb);
+		}
+		return sb.toString();
 	}
 }
